@@ -25,9 +25,9 @@ class ProgramResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('name')->required(),
                 Forms\Components\SpatieMediaLibraryFileUpload::make('document')
-                ->disk('cloud')
-                ->multiple()
-                ->collection('documents'),
+                    ->disk('cloudinary')
+                    ->multiple()
+                    ->collection('documents'),
             ]);
     }
 
@@ -36,7 +36,9 @@ class ProgramResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\SpatieMediaLibraryImageColumn::make('document')->collection('documents'),
+                Tables\Columns\SpatieMediaLibraryImageColumn::make('document')
+                    ->disk('cloudinary')
+                    ->collection('documents'),
                 Tables\Columns\TextColumn::make('created_at')->dateTime(),
             ])
             ->filters([
