@@ -24,7 +24,7 @@ class ExperienceResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')->required(),
-                Forms\Components\FileUpload::make('featured_image')->required(),
+                Forms\Components\FileUpload::make('featured_image')->required()->multiple(),
             ]);
     }
 

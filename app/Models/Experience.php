@@ -14,5 +14,8 @@ class Experience extends Model
         'featured_image',
     ];
 
-    
+    // cast the featured_image field to an array
+    protected $casts = [
+        'featured_image' => 'array',
+    ];
 }

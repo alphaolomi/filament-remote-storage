@@ -16,8 +16,14 @@ it('can list posts', function () {
     /** @var \Livewire\Testing\TestableLivewire $livewire */
     $livewire = livewire(Resources\ExperienceResource\Pages\ListExperiences::class);
 
+<<<<<<< Updated upstream
     $livewire
         ->assertSee($Experiences->first()->title)
         ->assertSuccessful();
     // ->assertCanSeeTableRecords($Experiences);
+=======
+    $livewire->assertSee($Experiences->first()->title)
+        ->assertSuccessful()
+        ->assertCanSeeTableRecords($Experiences);
+>>>>>>> Stashed changes
 });
