@@ -2,28 +2,22 @@
 
 use function Pest\Livewire\livewire;
 use App\Filament\Resources\ExperienceResource;
-use App\Filament\Resources;
+use App\Filament\Resources\ExperienceResource\Pages;
 use App\Models\Experience;
 
 it('can render experience page', function () {
-    $this->get(ExperienceResource::getUrl('index'))->assertSuccessful();
+    $url = ExperienceResource::getUrl('index');
+
+    $this->get($url)->assertSuccessful();
 });
 
 it('can list posts', function () {
-    $Experiences = Experience::factory()->count(10)->create();
+    $experiences = Experience::factory()
+        ->count(10)->create();
 
+    $page = livewire(Pages\ListExperiences::class);
 
-    /** @var \Livewire\Testing\TestableLivewire $livewire */
-    $livewire = livewire(Resources\ExperienceResource\Pages\ListExperiences::class);
-
-<<<<<<< Updated upstream
-    $livewire
-        ->assertSee($Experiences->first()->title)
-        ->assertSuccessful();
-    // ->assertCanSeeTableRecords($Experiences);
-=======
-    $livewire->assertSee($Experiences->first()->title)
-        ->assertSuccessful()
-        ->assertCanSeeTableRecords($Experiences);
->>>>>>> Stashed changes
+    $page->assertSuccessful()
+        ->assertSee($experiences->first()->title)       
+        ->assertCanSeeTableRecords($experiences);
 });
