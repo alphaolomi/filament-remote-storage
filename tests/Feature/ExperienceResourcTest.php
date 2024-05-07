@@ -21,3 +21,12 @@ it('can list posts', function () {
         ->assertSee($experiences->first()->title)       
         ->assertCanSeeTableRecords($experiences);
 });
+
+
+
+// --------------------------------------------------------
+ 
+it('sends a notification', function () {
+    livewire(CreatePost::class)
+        ->assertNotified();
+});
